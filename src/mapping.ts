@@ -27,7 +27,7 @@ export  function  handleCreateStream(ev: CreateStreamEvent): void {
  
   //token entity
   let token = TokenRegister.load(ev.params.tokenAddress.toHex())!;
-  if(token!==0){
+  if(token===0){
     log.error("[handleCreateStream] Token Does Not Exists{}",[ev.params.tokenAddress.toHex()]);
   }
 
