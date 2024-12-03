@@ -5,7 +5,7 @@ import {
     BigDecimal,
     Address,
   } from "@graphprotocol/graph-ts";
-  import { ERC20 } from "../../generated/Stream/ERC20";
+  import { ERC20, BSC20 } from "../../generated/Stream/ERC20";
   
   
   
