@@ -1,0 +1,44 @@
+specVersion: 0.0.2
+description: Fluir
+# repository: https://github.com/poap-xyz/poap-mainnet-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Stream
+    network: {{ network }}
+    source:
+      address: "{{ address }}"
+      abi: Stream
+      startBlock: {{ startBlock }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:     
+        - Stream 
+        - TokenRegister
+        - RegisteredTokenLog
+      abis:
+        - name: Stream
+          file: ./abis/stream.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: CreateStream(indexed uint256,indexed address,indexed address,uint256,address,uint256,uint256,uint256,uint256,uint256,uint256,bool,uint8,uint8,uint8)
+          handler: handleCreateStream
+        - event: TokenRegister(indexed address,uint256)
+          handler: handleTokenRegister
+        - event: ExtendStream(indexed uint256,indexed address,uint256,uint256)
+          handler: handleExtend
+        - event: WithdrawFromStream(indexed uint256,indexed address,uint256)
+          handler: handleWithdraw
+        - event: CloseStream(indexed uint256,indexed address,uint256,uint256)
+          handler: handleClose
+        - event: PauseStream(indexed uint256,indexed address,uint256)
+          handler: handlePause
+        - event: ResumeStream(indexed uint256,indexed address,uint256)
+          handler: handleResume
+        - event: SetNewRecipient(indexed uint256,indexed address,indexed address)
+          handler: handleSetNewRecipient  
+      file: ./src/mapping.ts

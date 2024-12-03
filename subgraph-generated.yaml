@@ -1,0 +1,18 @@
+Name: fluir-subgraph                                                   
+  Description: Goldsky Instant Subgraph for Stream and StreamGateway     
+  Version: 1.0.0                                                         
+  TargetPath: /Users/nathaniel/Stuff/Organizations/Fluir/fluir-subgraph  
+  CallHandlers: enabled                                                  
+  AbiSources:                                                            
+    - /Users/nathaniel/Stuff/Organizations/Fluir/fluir-subgraph/abis     
+  Contracts:                                                             
+    - Address: 0x1ba374587f82D0C4fd996C0fCb3399747cB30aD9                
+      Name: Stream                                                       
+      Networks:                                                          
+        - Network: taiko-hekla-testnet                                   
+          StartBlock: 960283                                                  
+    - Address: 0x2C0d71aA1145e192414a0885A3Fddd6B1932aa3D                
+      Name: StreamGateway                                                
+      Networks:                                                          
+        - Network: taiko-hekla-testnet                                         
+          StartBlock: 962613  
